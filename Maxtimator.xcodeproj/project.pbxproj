@@ -85,6 +85,7 @@
 		F090C8992BF8159600F502B2 = {
 			isa = PBXGroup;
 			children = (
+				F090C8DF2BF8EF9300F502B2 /* README.md */,
 				F090C8A42BF8159600F502B2 /* Maxtimator */,
 				F090C8B52BF8159700F502B2 /* MaxtimatorTests */,
 				F090C8BF2BF8159700F502B2 /* MaxtimatorUITests */,
@@ -112,7 +113,6 @@
 				F090C8D62BF81E1400F502B2 /* workoutData.txt */,
 				F090C8A92BF8159700F502B2 /* Assets.xcassets */,
 				F090C8AB2BF8159700F502B2 /* Preview Content */,
-				F090C8DF2BF8EF9300F502B2 /* README.md */,
 			);
 			path = Maxtimator;
 			sourceTree = "<group>";
