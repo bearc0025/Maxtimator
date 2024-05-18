@@ -17,7 +17,8 @@
 		F090C8D32BF819D900F502B2 /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D22BF819D900F502B2 /* DataMgr.swift */; };
 		F090C8D52BF81DCD00F502B2 /* DataFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D42BF81DCD00F502B2 /* DataFileLoader.swift */; };
 		F090C8D72BF81E1400F502B2 /* workoutData.txt in Resources */ = {isa = PBXBuildFile; fileRef = F090C8D62BF81E1400F502B2 /* workoutData.txt */; };
-		F090C8DA2BF8297C00F502B2 /* RepMaxEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D92BF8297C00F502B2 /* RepMaxEstimator.swift */; };
+		F090C8DA2BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D92BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift */; };
+		F090C8DE2BF8378C00F502B2 /* ExerciseMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8DD2BF8378C00F502B2 /* ExerciseMax.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,9 @@
 		F090C8D22BF819D900F502B2 /* DataMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
 		F090C8D42BF81DCD00F502B2 /* DataFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFileLoader.swift; sourceTree = "<group>"; };
 		F090C8D62BF81E1400F502B2 /* workoutData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = workoutData.txt; sourceTree = "<group>"; };
-		F090C8D92BF8297C00F502B2 /* RepMaxEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepMaxEstimator.swift; sourceTree = "<group>"; };
+		F090C8D92BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrzyckiRepMaxEstimator.swift; sourceTree = "<group>"; };
+		F090C8DD2BF8378C00F502B2 /* ExerciseMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseMax.swift; sourceTree = "<group>"; };
+		F090C8DF2BF8EF9300F502B2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,7 @@
 				F090C8D62BF81E1400F502B2 /* workoutData.txt */,
 				F090C8A92BF8159700F502B2 /* Assets.xcassets */,
 				F090C8AB2BF8159700F502B2 /* Preview Content */,
+				F090C8DF2BF8EF9300F502B2 /* README.md */,
 			);
 			path = Maxtimator;
 			sourceTree = "<group>";
@@ -143,6 +147,7 @@
 			children = (
 				F090C8D22BF819D900F502B2 /* DataMgr.swift */,
 				F090C8D42BF81DCD00F502B2 /* DataFileLoader.swift */,
+				F090C8DD2BF8378C00F502B2 /* ExerciseMax.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -150,7 +155,7 @@
 		F090C8D82BF8296F00F502B2 /* Analysis */ = {
 			isa = PBXGroup;
 			children = (
-				F090C8D92BF8297C00F502B2 /* RepMaxEstimator.swift */,
+				F090C8D92BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift */,
 			);
 			path = Analysis;
 			sourceTree = "<group>";
@@ -287,7 +292,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F090C8D32BF819D900F502B2 /* DataMgr.swift in Sources */,
-				F090C8DA2BF8297C00F502B2 /* RepMaxEstimator.swift in Sources */,
+				F090C8DA2BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift in Sources */,
+				F090C8DE2BF8378C00F502B2 /* ExerciseMax.swift in Sources */,
 				F090C8A82BF8159600F502B2 /* ContentView.swift in Sources */,
 				F090C8A62BF8159600F502B2 /* MaxtimatorApp.swift in Sources */,
 				F090C8D52BF81DCD00F502B2 /* DataFileLoader.swift in Sources */,

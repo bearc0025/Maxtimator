@@ -18,42 +18,65 @@ final class MaxtimatorTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testDataLoader() throws {
-        let dl = DataFileLoader()
-        let dataStrings = dl.loadData()
-        XCTAssertNotNil(dataStrings, "dataStrings sd not be nil")
-        XCTAssertEqual(dataStrings!.count, 582, "dataStrings sd have 583 values")
-    }
-
-    class MockDataLoader : DataLoader {
-        func loadData() async -> [String]? { nil }
+    class MockDataLoader : Sequence, IteratorProtocol {
+        typealias Element = String
+        var total = 0
+        var count = 0
+        init(total : Int) {
+            self.total = total
+        }
+        func makeIterator() -> MaxtimatorTests.MockDataLoader {
+            return self
+        }
+        func next() -> String? {
+            guard count < total else { return nil }
+            let retMe = "\(count) \(Date.now.formatted(date: .abbreviated, time: .complete))"
+            count += 1
+            return retMe
+        }
     }
     class MockOneRepEst : OneRepMaxEstimator {
-        func analyze(set: Maxtimator.OneSet) -> Double? { return nil }
+        func analyze(set: OneSet) -> Double { return 0.0 }
     }
 
-    func testLineParser() throws {
-        let str = "Oct 11 2020,Back Squat,10,45"
-        let dataMgr = DataMgr(dataLoader: MockDataLoader(), repMaxEstimator: MockOneRepEst())
-        let parsed = dataMgr.parse(line: str)
-        XCTAssertNotNil(parsed, "parsed sd not be nil")
-        XCTAssertEqual(parsed!.uid, "Oct 11 2020|Back Squat", "name sd be Oct 11 2020|Back Squat")
-        XCTAssertEqual(parsed!.set.reps, 10, "reps sd be 10")
-        XCTAssertEqual(parsed?.set.weight, 45.0, "weight sd be 45")
-    }
-    
     func testFileLoader() async throws {
         let dfl = DataFileLoader()
-        let strings = dfl.loadData()
-        XCTAssertNotNil(strings, "strings sd not be nil")
-        XCTAssertEqual(strings!.count, 582, "sd have 582 items")
+        let iterator = dfl.makeIterator()
+        for line in iterator {
+            print(line)
+        }
     }
     
-    func testDataMgr() async throws {
-        let dataMgr = DataMgr(dataLoader: DataFileLoader(), repMaxEstimator: MockOneRepEst())
-        await dataMgr.loadData()
-        XCTAssertNotNil(dataMgr.dateNameToData, "dataNameToData sd not be nil")
-//        XCTAssertEqual(dataMgr.dateNameToData.count, 88, "sd have 88 items")
+    func testBrzychi() throws {
+        let repEst = BrzyckiRepMaxEstimator()
+        let set = (reps:6, weight:245.0)
+        let max = repEst.analyze(set: set)
+        XCTAssertEqual(max, 284.52, accuracy: 0.05, "sd be 284.52")
+    }
+    
+    func testExMax() throws {
+        let exMax = ExerciseMax()
+        exMax.process(components: ["Oct 11 2020","Back Squat","6","245"], maxEstimator: BrzyckiRepMaxEstimator())
+        XCTAssertEqual(exMax.dateToMax.count, 1, "sd have 1 item")
+        XCTAssertEqual(exMax.dateToMax.keys.first, "Oct 11 2020")
+        XCTAssertEqual(exMax.dateToMax.values.first!, 284.52, accuracy: 0.05, "sd be 284")
+        exMax.process(components: ["Oct 11 2020","Back Squat","6","255"], maxEstimator: BrzyckiRepMaxEstimator())
+        XCTAssertEqual(exMax.dateToMax.count, 1, "sd have 1 item")
+        XCTAssertEqual(exMax.dateToMax.keys.first, "Oct 11 2020")
+        XCTAssertEqual(exMax.dateToMax.values.first!, 296.13, accuracy: 0.05, "sd be 296")
+        exMax.process(components: ["Nov 11 2020","Back Squat","6","255"], maxEstimator: BrzyckiRepMaxEstimator())
+        XCTAssertEqual(exMax.dateToMax.count, 2, "sd have 2 item2")
+    }
+
+    func testExMaxMgr() throws {
+        let exMaxMgr = ExerciseMaxMgr(maxEstimator: BrzyckiRepMaxEstimator())
+        let line1 = "Oct 11 2020,Back Squat,10,45"
+        exMaxMgr.process(line: line1)
+        XCTAssertEqual(exMaxMgr.nameToMax.count, 1, "sd have 1 exMax")
+        XCTAssertEqual(exMaxMgr.nameToMax.keys.first, "Back Squat", "sd be back squat")
+        let line2 = "Oct 11 2020,Deadlift,20,65"
+        exMaxMgr.process(line: line2)
+        XCTAssertEqual(exMaxMgr.nameToMax.count, 2, "sd have 2 exMax")
     }
     
     func testPerformanceExample() throws {
