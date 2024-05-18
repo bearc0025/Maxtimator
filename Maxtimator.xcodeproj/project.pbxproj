@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F090C8A62BF8159600F502B2 /* MaxtimatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8A52BF8159600F502B2 /* MaxtimatorApp.swift */; };
+		F090C8A82BF8159600F502B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8A72BF8159600F502B2 /* ContentView.swift */; };
+		F090C8AA2BF8159700F502B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F090C8A92BF8159700F502B2 /* Assets.xcassets */; };
+		F090C8AD2BF8159700F502B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F090C8AC2BF8159700F502B2 /* Preview Assets.xcassets */; };
+		F090C8B72BF8159700F502B2 /* MaxtimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8B62BF8159700F502B2 /* MaxtimatorTests.swift */; };
+		F090C8C12BF8159700F502B2 /* MaxtimatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8C02BF8159700F502B2 /* MaxtimatorUITests.swift */; };
+		F090C8C32BF8159700F502B2 /* MaxtimatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8C22BF8159700F502B2 /* MaxtimatorUITestsLaunchTests.swift */; };
+		F090C8D32BF819D900F502B2 /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D22BF819D900F502B2 /* DataMgr.swift */; };
+		F090C8D52BF81DCD00F502B2 /* DataFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D42BF81DCD00F502B2 /* DataFileLoader.swift */; };
+		F090C8D72BF81E1400F502B2 /* workoutData.txt in Resources */ = {isa = PBXBuildFile; fileRef = F090C8D62BF81E1400F502B2 /* workoutData.txt */; };
+		F090C8DA2BF8297C00F502B2 /* RepMaxEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D92BF8297C00F502B2 /* RepMaxEstimator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F090C8B32BF8159700F502B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F090C89A2BF8159600F502B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F090C8A12BF8159600F502B2;
+			remoteInfo = Maxtimator;
+		};
+		F090C8BD2BF8159700F502B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F090C89A2BF8159600F502B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F090C8A12BF8159600F502B2;
+			remoteInfo = Maxtimator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F090C8A22BF8159600F502B2 /* Maxtimator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maxtimator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F090C8A52BF8159600F502B2 /* MaxtimatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorApp.swift; sourceTree = "<group>"; };
+		F090C8A72BF8159600F502B2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F090C8A92BF8159700F502B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F090C8AC2BF8159700F502B2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F090C8B22BF8159700F502B2 /* MaxtimatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaxtimatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F090C8B62BF8159700F502B2 /* MaxtimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorTests.swift; sourceTree = "<group>"; };
+		F090C8BC2BF8159700F502B2 /* MaxtimatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaxtimatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F090C8C02BF8159700F502B2 /* MaxtimatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorUITests.swift; sourceTree = "<group>"; };
+		F090C8C22BF8159700F502B2 /* MaxtimatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F090C8D22BF819D900F502B2 /* DataMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
+		F090C8D42BF81DCD00F502B2 /* DataFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFileLoader.swift; sourceTree = "<group>"; };
+		F090C8D62BF81E1400F502B2 /* workoutData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = workoutData.txt; sourceTree = "<group>"; };
+		F090C8D92BF8297C00F502B2 /* RepMaxEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepMaxEstimator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F090C89F2BF8159600F502B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F090C8AF2BF8159700F502B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F090C8B92BF8159700F502B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F090C8992BF8159600F502B2 = {
+			isa = PBXGroup;
+			children = (
+				F090C8A42BF8159600F502B2 /* Maxtimator */,
+				F090C8B52BF8159700F502B2 /* MaxtimatorTests */,
+				F090C8BF2BF8159700F502B2 /* MaxtimatorUITests */,
+				F090C8A32BF8159600F502B2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F090C8A32BF8159600F502B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F090C8A22BF8159600F502B2 /* Maxtimator.app */,
+				F090C8B22BF8159700F502B2 /* MaxtimatorTests.xctest */,
+				F090C8BC2BF8159700F502B2 /* MaxtimatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F090C8A42BF8159600F502B2 /* Maxtimator */ = {
+			isa = PBXGroup;
+			children = (
+				F090C8D82BF8296F00F502B2 /* Analysis */,
+				F090C8CF2BF815B700F502B2 /* Data */,
+				F090C8A52BF8159600F502B2 /* MaxtimatorApp.swift */,
+				F090C8A72BF8159600F502B2 /* ContentView.swift */,
+				F090C8D62BF81E1400F502B2 /* workoutData.txt */,
+				F090C8A92BF8159700F502B2 /* Assets.xcassets */,
+				F090C8AB2BF8159700F502B2 /* Preview Content */,
+			);
+			path = Maxtimator;
+			sourceTree = "<group>";
+		};
+		F090C8AB2BF8159700F502B2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F090C8AC2BF8159700F502B2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F090C8B52BF8159700F502B2 /* MaxtimatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				F090C8B62BF8159700F502B2 /* MaxtimatorTests.swift */,
+			);
+			path = MaxtimatorTests;
+			sourceTree = "<group>";
+		};
+		F090C8BF2BF8159700F502B2 /* MaxtimatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F090C8C02BF8159700F502B2 /* MaxtimatorUITests.swift */,
+				F090C8C22BF8159700F502B2 /* MaxtimatorUITestsLaunchTests.swift */,
+			);
+			path = MaxtimatorUITests;
+			sourceTree = "<group>";
+		};
+		F090C8CF2BF815B700F502B2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F090C8D22BF819D900F502B2 /* DataMgr.swift */,
+				F090C8D42BF81DCD00F502B2 /* DataFileLoader.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F090C8D82BF8296F00F502B2 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				F090C8D92BF8297C00F502B2 /* RepMaxEstimator.swift */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F090C8A12BF8159600F502B2 /* Maxtimator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F090C8C62BF8159700F502B2 /* Build configuration list for PBXNativeTarget "Maxtimator" */;
+			buildPhases = (
+				F090C89E2BF8159600F502B2 /* Sources */,
+				F090C89F2BF8159600F502B2 /* Frameworks */,
+				F090C8A02BF8159600F502B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Maxtimator;
+			productName = Maxtimator;
+			productReference = F090C8A22BF8159600F502B2 /* Maxtimator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F090C8B12BF8159700F502B2 /* MaxtimatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F090C8C92BF8159700F502B2 /* Build configuration list for PBXNativeTarget "MaxtimatorTests" */;
+			buildPhases = (
+				F090C8AE2BF8159700F502B2 /* Sources */,
+				F090C8AF2BF8159700F502B2 /* Frameworks */,
+				F090C8B02BF8159700F502B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F090C8B42BF8159700F502B2 /* PBXTargetDependency */,
+			);
+			name = MaxtimatorTests;
+			productName = MaxtimatorTests;
+			productReference = F090C8B22BF8159700F502B2 /* MaxtimatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F090C8BB2BF8159700F502B2 /* MaxtimatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F090C8CC2BF8159700F502B2 /* Build configuration list for PBXNativeTarget "MaxtimatorUITests" */;
+			buildPhases = (
+				F090C8B82BF8159700F502B2 /* Sources */,
+				F090C8B92BF8159700F502B2 /* Frameworks */,
+				F090C8BA2BF8159700F502B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F090C8BE2BF8159700F502B2 /* PBXTargetDependency */,
+			);
+			name = MaxtimatorUITests;
+			productName = MaxtimatorUITests;
+			productReference = F090C8BC2BF8159700F502B2 /* MaxtimatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F090C89A2BF8159600F502B2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					F090C8A12BF8159600F502B2 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					F090C8B12BF8159700F502B2 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = F090C8A12BF8159600F502B2;
+					};
+					F090C8BB2BF8159700F502B2 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = F090C8A12BF8159600F502B2;
+					};
+				};
+			};
+			buildConfigurationList = F090C89D2BF8159600F502B2 /* Build configuration list for PBXProject "Maxtimator" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F090C8992BF8159600F502B2;
+			productRefGroup = F090C8A32BF8159600F502B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F090C8A12BF8159600F502B2 /* Maxtimator */,
+				F090C8B12BF8159700F502B2 /* MaxtimatorTests */,
+				F090C8BB2BF8159700F502B2 /* MaxtimatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F090C8A02BF8159600F502B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F090C8AD2BF8159700F502B2 /* Preview Assets.xcassets in Resources */,
+				F090C8AA2BF8159700F502B2 /* Assets.xcassets in Resources */,
+				F090C8D72BF81E1400F502B2 /* workoutData.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F090C8B02BF8159700F502B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F090C8BA2BF8159700F502B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F090C89E2BF8159600F502B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F090C8D32BF819D900F502B2 /* DataMgr.swift in Sources */,
+				F090C8DA2BF8297C00F502B2 /* RepMaxEstimator.swift in Sources */,
+				F090C8A82BF8159600F502B2 /* ContentView.swift in Sources */,
+				F090C8A62BF8159600F502B2 /* MaxtimatorApp.swift in Sources */,
+				F090C8D52BF81DCD00F502B2 /* DataFileLoader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F090C8AE2BF8159700F502B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F090C8B72BF8159700F502B2 /* MaxtimatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F090C8B82BF8159700F502B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F090C8C32BF8159700F502B2 /* MaxtimatorUITestsLaunchTests.swift in Sources */,
+				F090C8C12BF8159700F502B2 /* MaxtimatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F090C8B42BF8159700F502B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F090C8A12BF8159600F502B2 /* Maxtimator */;
+			targetProxy = F090C8B32BF8159700F502B2 /* PBXContainerItemProxy */;
+		};
+		F090C8BE2BF8159700F502B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F090C8A12BF8159600F502B2 /* Maxtimator */;
+			targetProxy = F090C8BD2BF8159700F502B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F090C8C42BF8159700F502B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F090C8C52BF8159700F502B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F090C8C72BF8159700F502B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Maxtimator/Preview Content\"";
+				DEVELOPMENT_TEAM = YPX8F5ED57;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainwashinc.Maxtimator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F090C8C82BF8159700F502B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Maxtimator/Preview Content\"";
+				DEVELOPMENT_TEAM = YPX8F5ED57;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainwashinc.Maxtimator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F090C8CA2BF8159700F502B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YPX8F5ED57;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainwashinc.MaxtimatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Maxtimator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Maxtimator";
+			};
+			name = Debug;
+		};
+		F090C8CB2BF8159700F502B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YPX8F5ED57;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainwashinc.MaxtimatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Maxtimator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Maxtimator";
+			};
+			name = Release;
+		};
+		F090C8CD2BF8159700F502B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YPX8F5ED57;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainwashinc.MaxtimatorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Maxtimator;
+			};
+			name = Debug;
+		};
+		F090C8CE2BF8159700F502B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YPX8F5ED57;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainwashinc.MaxtimatorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Maxtimator;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F090C89D2BF8159600F502B2 /* Build configuration list for PBXProject "Maxtimator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F090C8C42BF8159700F502B2 /* Debug */,
+				F090C8C52BF8159700F502B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F090C8C62BF8159700F502B2 /* Build configuration list for PBXNativeTarget "Maxtimator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F090C8C72BF8159700F502B2 /* Debug */,
+				F090C8C82BF8159700F502B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F090C8C92BF8159700F502B2 /* Build configuration list for PBXNativeTarget "MaxtimatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F090C8CA2BF8159700F502B2 /* Debug */,
+				F090C8CB2BF8159700F502B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F090C8CC2BF8159700F502B2 /* Build configuration list for PBXNativeTarget "MaxtimatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F090C8CD2BF8159700F502B2 /* Debug */,
+				F090C8CE2BF8159700F502B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F090C89A2BF8159600F502B2 /* Project object */;
+}
