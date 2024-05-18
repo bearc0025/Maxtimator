@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Charts
 
 struct ContentView: View {
     // DataMgr to load and process the data for listing.
@@ -40,7 +39,7 @@ struct ContentView: View {
                 }
             }
             .listStyle(.plain)
-            .navigationTitle("    ") // avoid "< Back"
+            .navigationTitle("") // avoid "Back" text in the back button
         }
         .containerRelativeFrame([.horizontal, .vertical]) // go to the edges
         .background(.black)
@@ -52,15 +51,3 @@ struct ContentView: View {
     ContentView()
         .environment(\.colorScheme, .dark)
 }
-
-/// Simple class to process date label strings
-class LabelDate {
-    var dateFmtr = DateFormatter()
-    init() {
-        dateFmtr.dateFormat = "MMM dd yyyy"
-    }
-    func date(for dateString : String) -> Date {
-        dateFmtr.date(from: dateString) ?? .now
-    }
-}
-
