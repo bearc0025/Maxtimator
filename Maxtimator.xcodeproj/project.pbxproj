@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F06A2F412BFBF4DC00DA589F /* URLUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06A2F402BFBF4DC00DA589F /* URLUtil.swift */; };
 		F090C8A62BF8159600F502B2 /* MaxtimatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8A52BF8159600F502B2 /* MaxtimatorApp.swift */; };
 		F090C8A82BF8159600F502B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8A72BF8159600F502B2 /* ContentView.swift */; };
 		F090C8AA2BF8159700F502B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F090C8A92BF8159700F502B2 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F06A2F402BFBF4DC00DA589F /* URLUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLUtil.swift; sourceTree = "<group>"; };
 		F090C8A22BF8159600F502B2 /* Maxtimator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maxtimator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F090C8A52BF8159600F502B2 /* MaxtimatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorApp.swift; sourceTree = "<group>"; };
 		F090C8A72BF8159600F502B2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				F090C8A52BF8159600F502B2 /* MaxtimatorApp.swift */,
+				F06A2F402BFBF4DC00DA589F /* URLUtil.swift */,
 				F0EC3FDA2BF939550092F2C6 /* UI */,
 				F090C8D82BF8296F00F502B2 /* Analysis */,
 				F090C8CF2BF815B700F502B2 /* Data */,
@@ -309,6 +312,7 @@
 				F090C8DA2BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift in Sources */,
 				F090C8DE2BF8378C00F502B2 /* ExerciseMax.swift in Sources */,
 				F090C8A82BF8159600F502B2 /* ContentView.swift in Sources */,
+				F06A2F412BFBF4DC00DA589F /* URLUtil.swift in Sources */,
 				F0EC3FDE2BF939790092F2C6 /* ExerciseRow.swift in Sources */,
 				F090C8A62BF8159600F502B2 /* MaxtimatorApp.swift in Sources */,
 				F0EC3FDC2BF939620092F2C6 /* MaxChart.swift in Sources */,
