@@ -8,9 +8,9 @@
 import Foundation
 
 extension URL {
-    var fileSize : UInt64? {
+    var fileSize : Int? {
         if let attrDict = try? FileManager.default.attributesOfItem(atPath: self.path) {
-            return attrDict[.size] as? UInt64
+            return attrDict[.size] as? Int
         }
         return 0
     }

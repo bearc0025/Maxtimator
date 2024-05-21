@@ -64,7 +64,8 @@ class ExerciseMax {
         dateFmtr.dateFormat = "MMM dd yyyy"
         let sortedStrings = dateToMax.keys
             .sorted {
-                guard let d1 = dateFmtr.date(from: $0), let d2 = dateFmtr.date(from: $1) else { return false }
+                guard let d1 = dateFmtr.date(from: $0), 
+                      let d2 = dateFmtr.date(from: $1) else { return true }
                 return d1 < d2
             }
         

@@ -8,22 +8,26 @@
 import Foundation
 
 let FILENAME = "workoutData.txt"
-let FileSizeSm = 1024*1024
+let FileSizeSm = 3*1024*1024 // 3MB
 
 class DataFileLoader : Sequence, IteratorProtocol {
     typealias Element = String
     
+    // For reading file line-by-line:
     // a pointer to a null-terminated, UTF-8 encoded sequence of bytes
-    var lineCharPointer: UnsafeMutablePointer<CChar>? = nil
     var filePointer : UnsafeMutablePointer<FILE>?
+    var lineCharPointer: UnsafeMutablePointer<CChar>? = nil
     var lineCap: Int = 0
-    
     var hasMoreData = true
+    
+    // For loading entire file:
+    // cached data for smaller files
     var fileLines : [String]?
     var lineIndex = 0
+    var retainCachedLines = false
     
     /// Initializes the object by opening the workout data file
-    init() {
+    init(retainCache : Bool = false) {
         guard let fileURL = Bundle.main.url(forResource: FILENAME, withExtension: nil) else {
             // handle error
             return
@@ -42,6 +46,7 @@ class DataFileLoader : Sequence, IteratorProtocol {
             if let data = try? Data(contentsOf: fileURL),
                 let dataStr = String(data: data, encoding: .utf8) {
                     fileLines = dataStr.components(separatedBy: "\n")
+                    retainCachedLines = retainCache
                     return
             }
         }
@@ -67,9 +72,14 @@ class DataFileLoader : Sequence, IteratorProtocol {
     }
     
     func nextCachedLine() -> String? {
-        // this cd just return the next item (next line) in the list but we may want the cached data
-        //        fileLines?.remove(at: lineIndex)
+        // if not keeping the cached data...
+        guard retainCachedLines else {
+            // remove/return the next line
+            guard fileLines != nil, !fileLines!.isEmpty else { return nil }
+            return fileLines!.remove(at: lineIndex)
+        }
         
+        // keeping cached data...
         // check for, and return, next line with index
         var line : String? =  nil
         if let fileLines = fileLines, lineIndex < fileLines.count {
@@ -79,6 +89,7 @@ class DataFileLoader : Sequence, IteratorProtocol {
         return line
     }
     
+    /// Read the file line-by-line
     func nextReadLine() -> String? {
         guard hasMoreData else { return nil }
         hasMoreData = getline(&lineCharPointer, &lineCap, filePointer) > 0

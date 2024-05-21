@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00C15022BFCC95300BEAF1C /* RepMaxList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C15012BFCC95300BEAF1C /* RepMaxList.swift */; };
+		F00C15042BFCCA5700BEAF1C /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C15032BFCCA5700BEAF1C /* ChartView.swift */; };
 		F06A2F412BFBF4DC00DA589F /* URLUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06A2F402BFBF4DC00DA589F /* URLUtil.swift */; };
 		F090C8A62BF8159600F502B2 /* MaxtimatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8A52BF8159600F502B2 /* MaxtimatorApp.swift */; };
 		F090C8A82BF8159600F502B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8A72BF8159600F502B2 /* ContentView.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F00C15012BFCC95300BEAF1C /* RepMaxList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepMaxList.swift; sourceTree = "<group>"; };
+		F00C15032BFCCA5700BEAF1C /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		F06A2F402BFBF4DC00DA589F /* URLUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLUtil.swift; sourceTree = "<group>"; };
 		F090C8A22BF8159600F502B2 /* Maxtimator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maxtimator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F090C8A52BF8159600F502B2 /* MaxtimatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorApp.swift; sourceTree = "<group>"; };
@@ -171,8 +175,10 @@
 			isa = PBXGroup;
 			children = (
 				F090C8A72BF8159600F502B2 /* ContentView.swift */,
-				F0EC3FDB2BF939620092F2C6 /* MaxChart.swift */,
+				F00C15012BFCC95300BEAF1C /* RepMaxList.swift */,
 				F0EC3FDD2BF939790092F2C6 /* ExerciseRow.swift */,
+				F00C15032BFCCA5700BEAF1C /* ChartView.swift */,
+				F0EC3FDB2BF939620092F2C6 /* MaxChart.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -314,6 +320,8 @@
 				F090C8A82BF8159600F502B2 /* ContentView.swift in Sources */,
 				F06A2F412BFBF4DC00DA589F /* URLUtil.swift in Sources */,
 				F0EC3FDE2BF939790092F2C6 /* ExerciseRow.swift in Sources */,
+				F00C15022BFCC95300BEAF1C /* RepMaxList.swift in Sources */,
+				F00C15042BFCCA5700BEAF1C /* ChartView.swift in Sources */,
 				F090C8A62BF8159600F502B2 /* MaxtimatorApp.swift in Sources */,
 				F0EC3FDC2BF939620092F2C6 /* MaxChart.swift in Sources */,
 				F090C8D52BF81DCD00F502B2 /* DataFileLoader.swift in Sources */,

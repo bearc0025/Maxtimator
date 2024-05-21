@@ -79,10 +79,47 @@ final class MaxtimatorTests: XCTestCase {
         XCTAssertEqual(exMaxMgr.nameToMax.count, 2, "sd have 2 exMax")
     }
     
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
+
+    func setupLines(numLines : Int) -> [String] {
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        var moves = ["Back 1", "Back 2", "Bicep 1", "Bicep 2", "Leg 1", "Leg 2"]
+        
+        var month : String { months[Int.random(in: 0..<months.count)] }
+        var day : String { "\(Int.random(in: 1..<29))" }
+        var move : String { moves[Int.random(in: 0..<moves.count)] }
+        
+        var reps : String { "\(Int.random(in: 4..<15))" }
+        var weight : String { "\(Int.random(in: 85..<200))" }
+        
+        var lines = [String]()
+        for x in 0..<numLines {
+            let line = "\(month) \(day) 2020, \(move), \(reps), \(weight)"
+            lines.append(line)
+        }
+        return lines
+    }
+    
+    func testPerformanceDataLoading() throws {
+        let repMaxEstimator = BrzyckiRepMaxEstimator()
+        let exerciseMaxMgr = ExerciseMaxMgr(maxEstimator: repMaxEstimator)
+
+        let lines = setupLines(numLines: 100000)
         self.measure {
-            // Put the code you want to measure the time of here.
+            lines.forEach { exerciseMaxMgr.process(line: $0) }
+        }
+    }
+
+    func testPerformanceKeySortingLoading() throws {
+        let repMaxEstimator = BrzyckiRepMaxEstimator()
+        let exerciseMaxMgr = ExerciseMaxMgr(maxEstimator: repMaxEstimator)
+        
+        let lines = setupLines(numLines: 100000)
+        lines.forEach { exerciseMaxMgr.process(line: $0) }
+
+        self.measure {
+            exerciseMaxMgr.nameToMax.values.forEach { exMex in
+                let sortedKeys = exMex.dateStrings
+            }
         }
     }
 

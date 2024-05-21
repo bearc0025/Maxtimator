@@ -17,6 +17,4 @@ class BrzyckiRepMaxEstimator : OneRepMaxEstimator {
         
         return maxEst
     }
-    
-    
 }
