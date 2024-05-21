@@ -10,6 +10,7 @@ import Foundation
 let FILENAME = "workoutData.txt"
 let FileSizeSm = 3*1024*1024 // 3MB
 
+// MARK: - Data load for file: cached or read line-by-line
 class DataFileLoader : Sequence, IteratorProtocol {
     typealias Element = String
     

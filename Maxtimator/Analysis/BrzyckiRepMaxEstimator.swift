@@ -7,7 +7,8 @@
 
 import Foundation
 
-// see https://en.wikipedia.org/wiki/One-repetition_maximum 
+// MARK: - Brzycki 1-rep max estimator
+// see https://en.wikipedia.org/wiki/One-repetition_maximum
 class BrzyckiRepMaxEstimator : OneRepMaxEstimator {
     func analyze(set: OneSet) -> Double {
         let w = set.weight

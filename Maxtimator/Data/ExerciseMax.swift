@@ -9,6 +9,7 @@ import Foundation
 
 let dayInMins = 24.0 * 60.0 * 60.0
 
+// MARK: - ExerciseMaxMgr - data for all exercise move max estimates
 class ExerciseMaxMgr {
     private(set) var maxEstimator : OneRepMaxEstimator
     private(set) var nameToMax = [String:ExerciseMax]()
@@ -52,55 +53,12 @@ class ExerciseMaxMgr {
     }
 }
 
+// MARK: - ExerciseMax - data for a given exercise
 class ExerciseMax {
     private(set) var maxEstimate = 0.0
     private(set) var dateToMax = [String:Double]()
     private var startDate : Date?
     private var endDate : Date?
-    
-    /// Sorted list of all dates for the PRs sorted by date.
-    var dateStrings : [String] {
-        let dateFmtr = DateFormatter()
-        dateFmtr.dateFormat = "MMM dd yyyy"
-        let sortedStrings = dateToMax.keys
-            .sorted {
-                guard let d1 = dateFmtr.date(from: $0), 
-                      let d2 = dateFmtr.date(from: $1) else { return true }
-                return d1 < d2
-            }
-        
-        if let first = sortedStrings.first, let last = sortedStrings.last {
-            startDate = dateFmtr.date(from: first)
-            endDate = dateFmtr.date(from: last)
-        }
-        
-        return sortedStrings
-    }
-    
-    /// What type of Calendar.Component best matches the number of entries of maxes.
-    var calendarScale : Calendar.Component {
-        switch dateToMax.count {
-        case 0..<10:
-            return .day
-        default:
-            return .month
-        }
-    }
-    
-    /// Calculated number of days that best matches the date range of the maxes.
-    var dayStride : Int {
-        if startDate == nil { let _ = dateStrings }
-        guard let startDate, let endDate else { return 99 }
-        let timeInterval = endDate.timeIntervalSince(startDate) / dayInMins
-        switch timeInterval {
-        case ..<14:
-            return 2
-        case 14..<50:
-            return 7
-        default:
-            return 30
-        }
-    }
     
     /// Processes an array of Strings of a given line being processed.
     /// Components: date, name, reps, weight
@@ -134,3 +92,52 @@ class ExerciseMax {
     }
 }
 
+// MARK: - Sorted date strings for the loaded data
+extension ExerciseMax {
+    /// Sorted list of all dates for the PRs sorted by date.
+    var dateStrings : [String] {
+        let dateFmtr = DateFormatter()
+        dateFmtr.dateFormat = "MMM dd yyyy"
+        let sortedStrings = dateToMax.keys
+            .sorted {
+                guard let d1 = dateFmtr.date(from: $0),
+                      let d2 = dateFmtr.date(from: $1) else { return true }
+                return d1 < d2
+            }
+        
+        if let first = sortedStrings.first, let last = sortedStrings.last {
+            startDate = dateFmtr.date(from: first)
+            endDate = dateFmtr.date(from: last)
+        }
+        
+        return sortedStrings
+    }
+}
+
+// MARK: - Calendar util
+extension ExerciseMax {
+    /// What type of Calendar.Component best matches the number of entries of maxes.
+    var calendarScale : Calendar.Component {
+        switch dateToMax.count {
+        case 0..<10:
+            return .day
+        default:
+            return .month
+        }
+    }
+    
+    /// Calculated number of days that best matches the date range of the maxes.
+    var dayStride : Int {
+        if startDate == nil { let _ = dateStrings }
+        guard let startDate, let endDate else { return 99 }
+        let timeInterval = endDate.timeIntervalSince(startDate) / dayInMins
+        switch timeInterval {
+        case ..<14:
+            return 2
+        case 14..<50:
+            return 7
+        default:
+            return 30
+        }
+    }
+}

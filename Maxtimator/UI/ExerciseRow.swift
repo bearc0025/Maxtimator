@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// List view UI for a given exercise max
+// MARK: - List view UI for a given exercise max
 struct ExerciseView: View {
     var exerciseName : String
     var formatedMaxPR : String

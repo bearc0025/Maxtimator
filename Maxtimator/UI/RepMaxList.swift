@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - List view of all max rep estimates
 struct RepMaxList: View {
     // DataMgr to load and process the data for listing.
     @StateObject var dataMgr = DataMgr(dataLoader: DataFileLoader(),

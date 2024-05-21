@@ -9,11 +9,12 @@ import Foundation
 
 typealias OneSet = (reps:Int,weight:Double)
 
-/// Protocol to define the interface for estimating a 1-rep max
+// MARK: - Protocol to define the interface for estimating a 1-rep max
 protocol OneRepMaxEstimator {
     func analyze(set : OneSet) -> Double
 }
 
+// MARK: - Main data management class to process data loaded
 class DataMgr : ObservableObject {
     private(set) var exerciseMaxMgr : ExerciseMaxMgr
 

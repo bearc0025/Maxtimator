@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-/// Simple singleton class to process date label strings
+// MARK: - Simple singleton class to process date label strings
 class LabelDate {
     static var shared = LabelDate()
     var dateFmtr = DateFormatter()
@@ -22,6 +22,7 @@ class LabelDate {
     }
 }
 
+// MARK: - Rep max estimate chart UI
 struct MaxPRChart : View {
     var exerciseMax : ExerciseMax
     let labelDate = LabelDate.shared

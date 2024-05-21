@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - The exercise info and charge UI
 struct ChartView : View {
     var dataMgr : DataMgr
     var exerciseName : String
