@@ -21,4 +21,6 @@ let FileSizeSm = 3*1024*1024 // 3MB
 Less than this size will be loaded into memory and parsed.
 That size or larger, the file will be read in line-by-line.
 
+## Error/Logging
 
+There is no error handling nor logging in the app. Only some placeholder code where errors/exceptions may occur.

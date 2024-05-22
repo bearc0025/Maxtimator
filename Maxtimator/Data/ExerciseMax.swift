@@ -65,6 +65,8 @@ class ExerciseMax {
     /// Uses the passed in max estimator to determine 1 rep max for data.
     /// Stores the estimate as the max if there isn't one or it's larger than the current value.
     /// Stores the estimate as the overall max if larger than the current.
+    ///  - Parameter components: String array (4) of date (MMM dd yyyy), name, reps and weight
+    ///  - Parameter maxEstimator: 1 rep max estimator for reps and weight.
     func process(components : [String], maxEstimator : OneRepMaxEstimator) {
         guard components.count == 4 else {
             // handle error
