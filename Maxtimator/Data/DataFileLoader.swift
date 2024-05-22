@@ -71,12 +71,15 @@ class DataFileLoader : Sequence, IteratorProtocol {
         return nextReadLine()
     }
     
+    /// Interate over the data (String) cached from file.
+    /// - Returns: String - the next line in the data (file in the case of this instance)
     func nextLine() -> String? {
         // remove and return the next line
         return fileLines?.removeFirst()
     }
     
     /// Read the file line-by-line
+    /// - Returns: String - the next line in the data (file in the case of this instance)
     func nextReadLine() -> String? {
         guard hasMoreData else { return nil }
         hasMoreData = getline(&lineCharPointer, &lineCap, filePointer) > 0

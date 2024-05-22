@@ -8,6 +8,21 @@
 import Foundation
 
 let dayInMins = 24.0 * 60.0 * 60.0
+let DateFormat = "MMM dd yyyy"
+
+// MARK: - Simple singleton class to process date label strings
+class LabelDate {
+    static var shared = LabelDate()
+    var dateFmtr = DateFormatter()
+    
+    private init() {
+        dateFmtr.dateFormat = DateFormat
+    }
+    
+    func date(for dateString : String) -> Date {
+        dateFmtr.date(from: dateString) ?? .now
+    }
+}
 
 // MARK: - ExerciseMaxMgr - data for all exercise move max estimates
 class ExerciseMaxMgr {
@@ -95,11 +110,26 @@ class ExerciseMax {
 }
 
 // MARK: - Sorted date strings for the loaded data
-extension ExerciseMax {
+extension ExerciseMax : DateValueChartDelegate {
+    /// Formatted date String for delegate protocol.
+    /// The string passed in should be obtained from sortedDateStrings.
+    /// - Parameter date: String of a Date to be converted.
+    /// - Returns: Date instance for given string.
+    func dateString(for date: String) -> Date {
+        LabelDate.shared.date(for: date)
+    }
+    
+    /// The value related to the given date String passed in.
+    /// - Parameter date: The date string (from sortedDateStrings) to find a value for.
+    /// - Returns: Double value related to the date passed in.
+    func value(for date: String) -> Double {
+        dateToMax[date] ?? 0.0
+    }
+    
     /// Sorted list of all dates for the PRs sorted by date.
-    var dateStrings : [String] {
+    var sortedDateStrings : [String] {
         let dateFmtr = DateFormatter()
-        dateFmtr.dateFormat = "MMM dd yyyy"
+        dateFmtr.dateFormat = LabelDate.shared.dateFmtr.dateFormat
         let sortedStrings = dateToMax.keys
             .sorted {
                 guard let d1 = dateFmtr.date(from: $0),
@@ -119,6 +149,7 @@ extension ExerciseMax {
 // MARK: - Calendar util
 extension ExerciseMax {
     /// What type of Calendar.Component best matches the number of entries of maxes.
+    /// - Returns: Calendar.Component for the chart.
     var calendarScale : Calendar.Component {
         switch dateToMax.count {
         case 0..<10:
@@ -129,8 +160,9 @@ extension ExerciseMax {
     }
     
     /// Calculated number of days that best matches the date range of the maxes.
+    /// - Returns: Int day stride for the chart.
     var dayStride : Int {
-        if startDate == nil { let _ = dateStrings }
+        if startDate == nil { let _ = sortedDateStrings }
         guard let startDate, let endDate else { return 99 }
         let timeInterval = endDate.timeIntervalSince(startDate) / dayInMins
         switch timeInterval {

@@ -8,36 +8,31 @@
 import SwiftUI
 import Charts
 
-// MARK: - Simple singleton class to process date label strings
-class LabelDate {
-    static var shared = LabelDate()
-    var dateFmtr = DateFormatter()
-    
-    private init() {
-        dateFmtr.dateFormat = "MMM dd yyyy"
-    }
-    
-    func date(for dateString : String) -> Date {
-        dateFmtr.date(from: dateString) ?? .now
-    }
+// MARK: - Protocol to supply information for the DateValueChart UI.
+protocol DateValueChartDelegate {
+    var sortedDateStrings : [String] { get }
+    var calendarScale : Calendar.Component { get }
+    var dayStride : Int { get }
+    func dateString(for date : String) -> Date
+    func value(for date : String) -> Double
 }
 
 // MARK: - Rep max estimate chart UI
-struct MaxPRChart : View {
-    var exerciseMax : ExerciseMax
+struct DateValueChart : View {
+    var chartDataSource : DateValueChartDelegate
     let labelDate = LabelDate.shared
     
     var body: some View {
         Chart {
             // get the date strings and chart
-            ForEach(Array(exerciseMax.dateStrings), id:\.self) { date in
+            ForEach(Array(chartDataSource.sortedDateStrings), id:\.self) { date in
                 LineMark(
-                    x: .value("Date", labelDate.date(for: date)),
-                    y: .value("Weight", exerciseMax.dateToMax[date]!)
+                    x: .value("Date", chartDataSource.dateString(for: date)),
+                    y: .value("Weight", chartDataSource.value(for: date))
                 )
                 PointMark(
-                    x: .value("Date", labelDate.date(for: date)),
-                    y: .value("Weight", exerciseMax.dateToMax[date]!)
+                    x: .value("Date", chartDataSource.dateString(for: date)),
+                    y: .value("Weight", chartDataSource.value(for: date))
                 )
                 .symbol {
                     ZStack {
@@ -52,8 +47,8 @@ struct MaxPRChart : View {
             }
         }
         .chartXAxis {
-            let calScale = exerciseMax.calendarScale
-            let dayStride = exerciseMax.dayStride
+            let calScale = chartDataSource.calendarScale
+            let dayStride = chartDataSource.dayStride
             AxisMarks(values: .stride(by: .day, count: dayStride)) { value in
                 switch calScale {
                 case .day:

@@ -17,7 +17,7 @@ struct ChartView : View {
         VStack {
             ExerciseView(exerciseName: exerciseName,
                          formatedMaxPR: dataMgr.exerciseMaxMgr.formattedMaxPR(for: exerciseName))
-            MaxPRChart(exerciseMax: dataMgr.exerciseMaxMgr.nameToMax[exerciseName]!)
+            DateValueChart(chartDataSource: dataMgr.exerciseMaxMgr.nameToMax[exerciseName]!)
             
             // Bottom third empty
             Spacer()

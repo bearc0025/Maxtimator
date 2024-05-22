@@ -81,8 +81,8 @@ final class MaxtimatorTests: XCTestCase {
     
 
     func setupLines(numLines : Int) -> [String] {
-        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        var moves = ["Back 1", "Back 2", "Bicep 1", "Bicep 2", "Leg 1", "Leg 2"]
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let moves = ["Back 1", "Back 2", "Bicep 1", "Bicep 2", "Leg 1", "Leg 2"]
         
         var month : String { months[Int.random(in: 0..<months.count)] }
         var day : String { "\(Int.random(in: 1..<29))" }
@@ -92,7 +92,7 @@ final class MaxtimatorTests: XCTestCase {
         var weight : String { "\(Int.random(in: 85..<200))" }
         
         var lines = [String]()
-        for x in 0..<numLines {
+        (0..<numLines).forEach { _ in
             let line = "\(month) \(day) 2020, \(move), \(reps), \(weight)"
             lines.append(line)
         }
@@ -118,7 +118,7 @@ final class MaxtimatorTests: XCTestCase {
 
         self.measure {
             exerciseMaxMgr.nameToMax.values.forEach { exMex in
-                let sortedKeys = exMex.dateStrings
+                _ = exMex.sortedDateStrings
             }
         }
     }

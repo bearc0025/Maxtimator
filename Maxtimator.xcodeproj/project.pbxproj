@@ -22,7 +22,7 @@
 		F090C8D72BF81E1400F502B2 /* workoutData.txt in Resources */ = {isa = PBXBuildFile; fileRef = F090C8D62BF81E1400F502B2 /* workoutData.txt */; };
 		F090C8DA2BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D92BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift */; };
 		F090C8DE2BF8378C00F502B2 /* ExerciseMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8DD2BF8378C00F502B2 /* ExerciseMax.swift */; };
-		F0EC3FDC2BF939620092F2C6 /* MaxChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC3FDB2BF939620092F2C6 /* MaxChart.swift */; };
+		F0EC3FDC2BF939620092F2C6 /* DateValueChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC3FDB2BF939620092F2C6 /* DateValueChart.swift */; };
 		F0EC3FDE2BF939790092F2C6 /* ExerciseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC3FDD2BF939790092F2C6 /* ExerciseRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,7 @@
 		F090C8D92BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrzyckiRepMaxEstimator.swift; sourceTree = "<group>"; };
 		F090C8DD2BF8378C00F502B2 /* ExerciseMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseMax.swift; sourceTree = "<group>"; };
 		F090C8DF2BF8EF9300F502B2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F0EC3FDB2BF939620092F2C6 /* MaxChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxChart.swift; sourceTree = "<group>"; };
+		F0EC3FDB2BF939620092F2C6 /* DateValueChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueChart.swift; sourceTree = "<group>"; };
 		F0EC3FDD2BF939790092F2C6 /* ExerciseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,7 +178,7 @@
 				F00C15012BFCC95300BEAF1C /* RepMaxList.swift */,
 				F0EC3FDD2BF939790092F2C6 /* ExerciseRow.swift */,
 				F00C15032BFCCA5700BEAF1C /* ChartView.swift */,
-				F0EC3FDB2BF939620092F2C6 /* MaxChart.swift */,
+				F0EC3FDB2BF939620092F2C6 /* DateValueChart.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 				F00C15022BFCC95300BEAF1C /* RepMaxList.swift in Sources */,
 				F00C15042BFCCA5700BEAF1C /* ChartView.swift in Sources */,
 				F090C8A62BF8159600F502B2 /* MaxtimatorApp.swift in Sources */,
-				F0EC3FDC2BF939620092F2C6 /* MaxChart.swift in Sources */,
+				F0EC3FDC2BF939620092F2C6 /* DateValueChart.swift in Sources */,
 				F090C8D52BF81DCD00F502B2 /* DataFileLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
