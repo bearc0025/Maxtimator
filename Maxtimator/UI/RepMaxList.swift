@@ -10,22 +10,21 @@ import SwiftUI
 // MARK: - List view of all max rep estimates
 struct RepMaxList: View {
     // DataMgr to load and process the data for listing.
-    @StateObject var dataMgr = DataMgr(dataLoader: DataFileLoader(),
-                                       repMaxEstimator: BrzyckiRepMaxEstimator())
+    var exerciseMaxMgr : ExerciseMaxMgr
     
     var body: some View {
         NavigationView {
             List {
                 // exercise names are not sorted
-                ForEach(Array<String>(dataMgr.exerciseMaxMgr.nameToMax.keys), id:\.self) { exerciseName in
+                ForEach(Array<String>(exerciseMaxMgr.nameToMax.keys), id:\.self) { exerciseName in
                     ZStack {
                         ExerciseView(exerciseName: exerciseName,
-                                     formatedMaxPR: dataMgr.exerciseMaxMgr.formattedMaxPR(for: exerciseName))
+                                     formatedMaxPR: exerciseMaxMgr.formattedMaxPR(for: exerciseName))
                         
                         // This (below) is above (z level) the ExerciseView (above) so it's tappable but empty
                         // This avoids the disclosure indicator (>)
                         NavigationLink {
-                            ChartView(dataMgr: dataMgr, exerciseName: exerciseName)
+                            ChartView(exerciseMaxMgr: exerciseMaxMgr, exerciseName: exerciseName)
                         } label: {
                             EmptyView()
                         }

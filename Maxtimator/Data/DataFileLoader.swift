@@ -52,8 +52,12 @@ class DataFileLoader : Sequence, IteratorProtocol {
         filePointer = fopen(fileURL.path,"r")
     }
     
-    /// Close the file and clean up memory
     deinit {
+        closeFile()
+    }
+    
+    /// Close the file and clean up memory
+    func closeFile() {
         fclose(filePointer)
         lineCharPointer?.deallocate()
     }
@@ -81,7 +85,10 @@ class DataFileLoader : Sequence, IteratorProtocol {
     /// Read the file line-by-line
     /// - Returns: String - the next line in the data (file in the case of this instance)
     func readNextLine() -> String? {
-        guard hasMoreData else { return nil }
+        guard hasMoreData else {
+            closeFile()
+            return nil
+        }
         hasMoreData = getline(&lineCharPointer, &lineCap, filePointer) > 0
         
         // bytes -> string (UTF-8), remove \n

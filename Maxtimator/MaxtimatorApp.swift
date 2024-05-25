@@ -13,6 +13,8 @@ struct MaxtimatorApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.colorScheme, .dark)
+                .environment(ExerciseMaxMgr(dataLoader: DataFileLoader(),
+                                            maxEstimator: BrzyckiRepMaxEstimator()))
         }
     }
 }

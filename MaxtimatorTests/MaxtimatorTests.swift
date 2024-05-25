@@ -8,6 +8,26 @@
 import XCTest
 @testable import Maxtimator
 
+func setupLines(numLines : Int) -> [String] {
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    let moves = ["Back 1", "Back 2", "Bicep 1", "Bicep 2", "Leg 1", "Leg 2"]
+    
+    var month : String { months[Int.random(in: 0..<months.count)] }
+    var day : String { "\(Int.random(in: 1..<29))" }
+    var move : String { moves[Int.random(in: 0..<moves.count)] }
+    
+    var reps : String { "\(Int.random(in: 4..<15))" }
+    var weight : String { "\(Int.random(in: 85..<200))" }
+    
+    var lines = [String]()
+    (0..<numLines).forEach { _ in
+        let line = "\(month) \(day) 2020, \(move), \(reps), \(weight)"
+        lines.append(line)
+    }
+    return lines
+}
+
+
 final class MaxtimatorTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -21,18 +41,18 @@ final class MaxtimatorTests: XCTestCase {
     class MockDataLoader : Sequence, IteratorProtocol {
         typealias Element = String
         var total = 0
-        var count = 0
+        var lines : [String]
+        
         init(total : Int) {
             self.total = total
+            lines = setupLines(numLines: total)
         }
         func makeIterator() -> MaxtimatorTests.MockDataLoader {
             return self
         }
         func next() -> String? {
-            guard count < total else { return nil }
-            let retMe = "\(count) \(Date.now.formatted(date: .abbreviated, time: .complete))"
-            count += 1
-            return retMe
+            guard lines.isEmpty == false else { return nil }
+            return lines.removeFirst()
         }
     }
     class MockOneRepEst : OneRepMaxEstimator {
@@ -56,20 +76,24 @@ final class MaxtimatorTests: XCTestCase {
     
     func testExMax() throws {
         let exMax = ExerciseMax()
-        exMax.process(components: ["Oct 11 2020","Back Squat","6","245"], maxEstimator: BrzyckiRepMaxEstimator())
+        exMax.process(components: ["Oct 11 2020","Back Squat","6","245"], 
+                      maxEstimator: BrzyckiRepMaxEstimator())
         XCTAssertEqual(exMax.dateToMax.count, 1, "sd have 1 item")
         XCTAssertEqual(exMax.dateToMax.keys.first, "Oct 11 2020")
         XCTAssertEqual(exMax.dateToMax.values.first!, 284.52, accuracy: 0.05, "sd be 284")
-        exMax.process(components: ["Oct 11 2020","Back Squat","6","255"], maxEstimator: BrzyckiRepMaxEstimator())
+        exMax.process(components: ["Oct 11 2020","Back Squat","6","255"], 
+                      maxEstimator: BrzyckiRepMaxEstimator())
         XCTAssertEqual(exMax.dateToMax.count, 1, "sd have 1 item")
         XCTAssertEqual(exMax.dateToMax.keys.first, "Oct 11 2020")
         XCTAssertEqual(exMax.dateToMax.values.first!, 296.13, accuracy: 0.05, "sd be 296")
-        exMax.process(components: ["Nov 11 2020","Back Squat","6","255"], maxEstimator: BrzyckiRepMaxEstimator())
+        exMax.process(components: ["Nov 11 2020","Back Squat","6","255"], 
+                      maxEstimator: BrzyckiRepMaxEstimator())
         XCTAssertEqual(exMax.dateToMax.count, 2, "sd have 2 item2")
     }
 
     func testExMaxMgr() throws {
-        let exMaxMgr = ExerciseMaxMgr(maxEstimator: BrzyckiRepMaxEstimator())
+        let exMaxMgr = ExerciseMaxMgr(dataLoader: MockDataLoader(total: 0),
+                                      maxEstimator: BrzyckiRepMaxEstimator())
         let line1 = "Oct 11 2020,Back Squat,10,45"
         exMaxMgr.process(line: line1)
         XCTAssertEqual(exMaxMgr.nameToMax.count, 1, "sd have 1 exMax")
@@ -79,29 +103,17 @@ final class MaxtimatorTests: XCTestCase {
         XCTAssertEqual(exMaxMgr.nameToMax.count, 2, "sd have 2 exMax")
     }
     
-
-    func setupLines(numLines : Int) -> [String] {
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let moves = ["Back 1", "Back 2", "Bicep 1", "Bicep 2", "Leg 1", "Leg 2"]
-        
-        var month : String { months[Int.random(in: 0..<months.count)] }
-        var day : String { "\(Int.random(in: 1..<29))" }
-        var move : String { moves[Int.random(in: 0..<moves.count)] }
-        
-        var reps : String { "\(Int.random(in: 4..<15))" }
-        var weight : String { "\(Int.random(in: 85..<200))" }
-        
-        var lines = [String]()
-        (0..<numLines).forEach { _ in
-            let line = "\(month) \(day) 2020, \(move), \(reps), \(weight)"
-            lines.append(line)
-        }
-        return lines
+    func testExMaxMgrLines() throws {
+        let mockDL = MockDataLoader(total: 2)
+        let exMaxMgr = ExerciseMaxMgr(dataLoader: mockDL,
+                                      maxEstimator: BrzyckiRepMaxEstimator())
+        XCTAssertEqual(exMaxMgr.nameToMax.count, 2, "sd have 2 exMax")
     }
     
+
     func testPerformanceDataLoading() throws {
-        let repMaxEstimator = BrzyckiRepMaxEstimator()
-        let exerciseMaxMgr = ExerciseMaxMgr(maxEstimator: repMaxEstimator)
+        let exerciseMaxMgr = ExerciseMaxMgr(dataLoader: DataFileLoader(), 
+                                            maxEstimator: BrzyckiRepMaxEstimator())
 
         let lines = setupLines(numLines: 100000)
         self.measure {
@@ -110,8 +122,8 @@ final class MaxtimatorTests: XCTestCase {
     }
 
     func testPerformanceKeySortingLoading() throws {
-        let repMaxEstimator = BrzyckiRepMaxEstimator()
-        let exerciseMaxMgr = ExerciseMaxMgr(maxEstimator: repMaxEstimator)
+        let exerciseMaxMgr = ExerciseMaxMgr(dataLoader: DataFileLoader(),
+                                            maxEstimator: BrzyckiRepMaxEstimator())
         
         let lines = setupLines(numLines: 100000)
         lines.forEach { exerciseMaxMgr.process(line: $0) }

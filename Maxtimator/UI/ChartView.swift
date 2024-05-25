@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - The exercise info and charge UI
 struct ChartView : View {
-    var dataMgr : DataMgr
+    var exerciseMaxMgr : ExerciseMaxMgr
     var exerciseName : String
     
     @State var spacerHeight = 0.0
@@ -21,9 +21,9 @@ struct ChartView : View {
         // Destination of the list item: same a list item plus chart
         VStack {
             ExerciseView(exerciseName: exerciseName,
-                         formatedMaxPR: dataMgr.exerciseMaxMgr.formattedMaxPR(for: exerciseName))
+                         formatedMaxPR: exerciseMaxMgr.formattedMaxPR(for: exerciseName))
             
-            DateValueChart(chartDataSource: dataMgr.exerciseMaxMgr.nameToMax[exerciseName]!)
+            DateValueChart(chartDataSource: exerciseMaxMgr.nameToMax[exerciseName]!)
                 .frame(minHeight: chartHeight)
             
             Spacer()

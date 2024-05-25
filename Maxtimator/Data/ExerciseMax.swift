@@ -6,31 +6,29 @@
 //
 
 import Foundation
+import Charts
 
 let dayInMins = 24.0 * 60.0 * 60.0
 let DateFormat = "MMM dd yyyy"
 
-// MARK: - Simple singleton class to process date label strings
-class LabelDate {
-    static var shared = LabelDate()
-    var dateFmtr = DateFormatter()
-    
-    private init() {
-        dateFmtr.dateFormat = DateFormat
-    }
-    
-    func date(for dateString : String) -> Date {
-        dateFmtr.date(from: dateString) ?? .now
-    }
+typealias OneSet = (reps:Int,weight:Double)
+
+// MARK: - Protocol to define the interface for estimating a 1-rep max
+protocol OneRepMaxEstimator {
+    func analyze(set : OneSet) -> Double
 }
 
 // MARK: - ExerciseMaxMgr - data for all exercise move max estimates
-class ExerciseMaxMgr {
+class ExerciseMaxMgr : Observable {
     private(set) var maxEstimator : OneRepMaxEstimator
     private(set) var nameToMax = [String:ExerciseMax]()
+    private(set) var dataLoader : any Sequence<String>
+
     
-    init(maxEstimator : OneRepMaxEstimator) {
+    init(dataLoader : any Sequence<String>, maxEstimator : OneRepMaxEstimator) {
+        self.dataLoader = dataLoader
         self.maxEstimator = maxEstimator
+        processLines()
     }
     
     /// Formats a Max PR for a given exercise name with correct precision.
@@ -39,10 +37,18 @@ class ExerciseMaxMgr {
     ///
     func formattedMaxPR(for name : String) -> String {
         guard let maxEstimate = nameToMax[name]?.maxEstimate else { return "" }
-        if maxEstimate == maxEstimate.rounded(.down) {
-            return "\(Int(maxEstimate))"
+        return "\(Int(maxEstimate))"
+    }
+    
+    /// Takes a data loader sequence and 1 rep max estimator
+    /// - Parameter dataLoader: Sequence to process data lines
+    /// - Parameter repMaxEstimator: Object to estimate 1 rep max based on the OneRepMaxEstimator protocol.
+    func processLines() {
+        dataLoader.forEach { process(line: $0) }
+        nameToMax.values.forEach {
+            $0.sortDateStrings()
+            $0.prepMinMax()
         }
-        return String(format: "%.1f", maxEstimate)
     }
     
     /// Analyzes the line to determine if it is a PR and stores it for that exercise.
@@ -74,6 +80,11 @@ class ExerciseMax {
     private(set) var dateToMax = [String:Double]()
     private var startDate : Date?
     private var endDate : Date?
+    private let dateFmtr = DateFormatter()
+    private(set) var minVal = 99999
+    private(set) var maxVal = 0
+
+    private(set) var sortedDateStrings = [String]()
     
     /// Processes an array of Strings of a given line being processed.
     /// Components: date, name, reps, weight
@@ -115,8 +126,8 @@ extension ExerciseMax : DateValueChartDelegate {
     /// The string passed in should be obtained from sortedDateStrings.
     /// - Parameter date: String of a Date to be converted.
     /// - Returns: Date instance for given string.
-    func dateString(for date: String) -> Date {
-        LabelDate.shared.date(for: date)
+    func date(for dateString: String) -> Date {
+        dateFmtr.date(from: dateString) ?? .now
     }
     
     /// The value related to the given date String passed in.
@@ -127,9 +138,9 @@ extension ExerciseMax : DateValueChartDelegate {
     }
     
     /// Sorted list of all dates for the PRs sorted by date.
-    var sortedDateStrings : [String] {
-        let dateFmtr = DateFormatter()
-        dateFmtr.dateFormat = LabelDate.shared.dateFmtr.dateFormat
+    func sortDateStrings() {
+        dateFmtr.dateFormat = DateFormat
+        
         let sortedStrings = dateToMax.keys
             .sorted {
                 guard let d1 = dateFmtr.date(from: $0),
@@ -142,12 +153,23 @@ extension ExerciseMax : DateValueChartDelegate {
             endDate = dateFmtr.date(from: last)
         }
         
-        return sortedStrings
+        sortedDateStrings = sortedStrings
     }
-}
+ 
+    /// Prep min/max values for charting Y axis.
+    func prepMinMax() {
+        var minComp = 9999.0
+        var maxComp = 0.0
+        dateToMax.values.forEach { val in
+            minComp = min(minComp, val)
+            maxComp = max(maxComp, val)
+        }
+        
+        // lower/raise the min/max for better chart Y axis range
+        minVal = Int(minComp - 25.0)
+        maxVal = Int(maxComp + 25.0)
+    }
 
-// MARK: - Calendar util
-extension ExerciseMax {
     /// What type of Calendar.Component best matches the number of entries of maxes.
     /// - Returns: Calendar.Component for the chart.
     var calendarScale : Calendar.Component {
@@ -161,17 +183,11 @@ extension ExerciseMax {
     
     /// Calculated number of days that best matches the date range of the maxes.
     /// - Returns: Int day stride for the chart.
-    var dayStride : Int {
-        if startDate == nil { let _ = sortedDateStrings }
+    var chartStride : Int {
+        guard calendarScale != .day else { return 2 }
         guard let startDate, let endDate else { return 99 }
-        let timeInterval = endDate.timeIntervalSince(startDate) / dayInMins
-        switch timeInterval {
-        case ..<14:
-            return 2
-        case 14..<50:
-            return 7
-        default:
-            return 30
-        }
+
+        let months = endDate.timeIntervalSince(startDate) / dayInMins / 30
+        return Int(months) / 5
     }
 }
