@@ -14,6 +14,8 @@ class BrzyckiRepMaxEstimator : OneRepMaxEstimator {
         let w = set.weight
         let r = set.reps
         
+        guard w > 0, r > 0 else { return 0.0 }
+        
         let maxEst = w * (36.0 / (37.0 - Double(r)))
         
         return maxEst

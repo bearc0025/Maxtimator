@@ -24,7 +24,14 @@ class ExerciseMaxMgr : Observable {
     private(set) var nameToMax = [String:ExerciseMax]()
     private(set) var dataLoader : any Sequence<String>
 
-    
+    /// Initializer that takes the data loader and estimator.
+    /// It will process the lines from the data loader using the estimator when initialized.
+    ///
+    /// The data loader is a Sequence of type String with the format below.
+    ///
+    /// 4 items: date, name, reps, weight. Example:
+    ///
+    ///     Oct 11 2020,Back Squat,10,45
     init(dataLoader : any Sequence<String>, maxEstimator : OneRepMaxEstimator) {
         self.dataLoader = dataLoader
         self.maxEstimator = maxEstimator
@@ -60,14 +67,23 @@ class ExerciseMaxMgr : Observable {
     /// - Parameter line: Comma separated line of exercise information.
     ///
     func process(line : String) {
-        let components = line.components(separatedBy: ",")
+        // NOTE: This could potentially be a performance hit for large data sets.
+        guard let regex = try? Regex("\\s*,\\s*") else {
+            // handle error
+            return
+        }
+        let lineMassaged = line.replacing(regex, with: ",")
+        
+        let components = lineMassaged.components(separatedBy: ",")
         
         guard components.count == 4 else {
             // handle error
             return
         }
         
+        // Based on the exercise name...
         let name = components[1]
+        // Find the ExerciseMax instance (or create one) to process the data.
         let exerciseMax = nameToMax[name] ?? ExerciseMax()
         exerciseMax.process(components: components, maxEstimator: maxEstimator)
         nameToMax[name] = exerciseMax
@@ -85,6 +101,11 @@ class ExerciseMax {
     private(set) var maxVal = 0
 
     private(set) var sortedDateStrings = [String]()
+    
+    init() {
+        dateFmtr.dateFormat = DateFormat
+        dateFmtr.timeZone = TimeZone(identifier: "GMT")
+    }
     
     /// Processes an array of Strings of a given line being processed.
     /// Components: date, name, reps, weight
@@ -139,8 +160,6 @@ extension ExerciseMax : DateValueChartDelegate {
     
     /// Sorted list of all dates for the PRs sorted by date.
     func sortDateStrings() {
-        dateFmtr.dateFormat = DateFormat
-        
         let sortedStrings = dateToMax.keys
             .sorted {
                 guard let d1 = dateFmtr.date(from: $0),

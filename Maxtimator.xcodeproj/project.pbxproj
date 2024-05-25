@@ -14,13 +14,16 @@
 		F090C8A82BF8159600F502B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8A72BF8159600F502B2 /* ContentView.swift */; };
 		F090C8AA2BF8159700F502B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F090C8A92BF8159700F502B2 /* Assets.xcassets */; };
 		F090C8AD2BF8159700F502B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F090C8AC2BF8159700F502B2 /* Preview Assets.xcassets */; };
-		F090C8B72BF8159700F502B2 /* MaxtimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8B62BF8159700F502B2 /* MaxtimatorTests.swift */; };
+		F090C8B72BF8159700F502B2 /* ExerciseMaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8B62BF8159700F502B2 /* ExerciseMaxTests.swift */; };
 		F090C8C12BF8159700F502B2 /* MaxtimatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8C02BF8159700F502B2 /* MaxtimatorUITests.swift */; };
 		F090C8C32BF8159700F502B2 /* MaxtimatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8C22BF8159700F502B2 /* MaxtimatorUITestsLaunchTests.swift */; };
 		F090C8D52BF81DCD00F502B2 /* DataFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D42BF81DCD00F502B2 /* DataFileLoader.swift */; };
 		F090C8D72BF81E1400F502B2 /* workoutData.txt in Resources */ = {isa = PBXBuildFile; fileRef = F090C8D62BF81E1400F502B2 /* workoutData.txt */; };
 		F090C8DA2BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8D92BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift */; };
 		F090C8DE2BF8378C00F502B2 /* ExerciseMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090C8DD2BF8378C00F502B2 /* ExerciseMax.swift */; };
+		F09403E22C02753A00307C9C /* BrzyckiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09403E12C02753A00307C9C /* BrzyckiTests.swift */; };
+		F09403E42C02792300307C9C /* DataFileLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09403E32C02792300307C9C /* DataFileLoaderTests.swift */; };
+		F09403E62C02796400307C9C /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09403E52C02796400307C9C /* Mocks.swift */; };
 		F0EC3FDC2BF939620092F2C6 /* DateValueChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC3FDB2BF939620092F2C6 /* DateValueChart.swift */; };
 		F0EC3FDE2BF939790092F2C6 /* ExerciseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC3FDD2BF939790092F2C6 /* ExerciseRow.swift */; };
 /* End PBXBuildFile section */
@@ -52,7 +55,7 @@
 		F090C8A92BF8159700F502B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F090C8AC2BF8159700F502B2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F090C8B22BF8159700F502B2 /* MaxtimatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaxtimatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F090C8B62BF8159700F502B2 /* MaxtimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorTests.swift; sourceTree = "<group>"; };
+		F090C8B62BF8159700F502B2 /* ExerciseMaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseMaxTests.swift; sourceTree = "<group>"; };
 		F090C8BC2BF8159700F502B2 /* MaxtimatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaxtimatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F090C8C02BF8159700F502B2 /* MaxtimatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorUITests.swift; sourceTree = "<group>"; };
 		F090C8C22BF8159700F502B2 /* MaxtimatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxtimatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -61,6 +64,9 @@
 		F090C8D92BF8297C00F502B2 /* BrzyckiRepMaxEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrzyckiRepMaxEstimator.swift; sourceTree = "<group>"; };
 		F090C8DD2BF8378C00F502B2 /* ExerciseMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseMax.swift; sourceTree = "<group>"; };
 		F090C8DF2BF8EF9300F502B2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F09403E12C02753A00307C9C /* BrzyckiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrzyckiTests.swift; sourceTree = "<group>"; };
+		F09403E32C02792300307C9C /* DataFileLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFileLoaderTests.swift; sourceTree = "<group>"; };
+		F09403E52C02796400307C9C /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		F0EC3FDB2BF939620092F2C6 /* DateValueChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueChart.swift; sourceTree = "<group>"; };
 		F0EC3FDD2BF939790092F2C6 /* ExerciseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,7 +143,10 @@
 		F090C8B52BF8159700F502B2 /* MaxtimatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				F090C8B62BF8159700F502B2 /* MaxtimatorTests.swift */,
+				F090C8B62BF8159700F502B2 /* ExerciseMaxTests.swift */,
+				F09403E12C02753A00307C9C /* BrzyckiTests.swift */,
+				F09403E32C02792300307C9C /* DataFileLoaderTests.swift */,
+				F09403E52C02796400307C9C /* Mocks.swift */,
 			);
 			path = MaxtimatorTests;
 			sourceTree = "<group>";
@@ -328,7 +337,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F090C8B72BF8159700F502B2 /* MaxtimatorTests.swift in Sources */,
+				F09403E22C02753A00307C9C /* BrzyckiTests.swift in Sources */,
+				F090C8B72BF8159700F502B2 /* ExerciseMaxTests.swift in Sources */,
+				F09403E42C02792300307C9C /* DataFileLoaderTests.swift in Sources */,
+				F09403E62C02796400307C9C /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

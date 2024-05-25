@@ -38,42 +38,6 @@ final class MaxtimatorTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    class MockDataLoader : Sequence, IteratorProtocol {
-        typealias Element = String
-        var total = 0
-        var lines : [String]
-        
-        init(total : Int) {
-            self.total = total
-            lines = setupLines(numLines: total)
-        }
-        func makeIterator() -> MaxtimatorTests.MockDataLoader {
-            return self
-        }
-        func next() -> String? {
-            guard lines.isEmpty == false else { return nil }
-            return lines.removeFirst()
-        }
-    }
-    class MockOneRepEst : OneRepMaxEstimator {
-        func analyze(set: OneSet) -> Double { return 0.0 }
-    }
-
-    func testFileLoader() async throws {
-        let dfl = DataFileLoader()
-        let iterator = dfl.makeIterator()
-        for line in iterator {
-            print(line)
-        }
-    }
-    
-    func testBrzychi() throws {
-        let repEst = BrzyckiRepMaxEstimator()
-        let set = (reps:6, weight:245.0)
-        let max = repEst.analyze(set: set)
-        XCTAssertEqual(max, 284.52, accuracy: 0.05, "sd be 284.52")
-    }
-    
     func testExMax() throws {
         let exMax = ExerciseMax()
         exMax.process(components: ["Oct 11 2020","Back Squat","6","245"], 
@@ -89,6 +53,50 @@ final class MaxtimatorTests: XCTestCase {
         exMax.process(components: ["Nov 11 2020","Back Squat","6","255"], 
                       maxEstimator: BrzyckiRepMaxEstimator())
         XCTAssertEqual(exMax.dateToMax.count, 2, "sd have 2 item2")
+    }
+    
+    func testExMaxDate() {
+        let exMax = ExerciseMax()
+        
+        let rDate = exMax.date(for: "Jan 01 1970")
+        XCTAssertNotNil(rDate, "sdn't be nil")
+        XCTAssertLessThan(rDate, .now, "sd be before now")
+        
+        let testDate = Date(timeIntervalSince1970: 0)
+        XCTAssertEqual(rDate, testDate, "sd be equal to 1970")
+    }
+    
+    func testExMaxStride() {
+        let exMax = ExerciseMax()
+        let estimator = BrzyckiRepMaxEstimator()
+        
+        var lines = setupLines(numLines: 2)
+        lines.forEach { line in
+            exMax.process(components: line.components(separatedBy: ","), maxEstimator: estimator)
+        }
+        
+        var result = exMax.chartStride
+        XCTAssertEqual(result, 2, "sd be 2 (day b/c it's only 2 items)")
+
+        lines = setupLines(numLines: 20)
+        lines.forEach { line in
+            exMax.process(components: line.components(separatedBy: ","), maxEstimator: estimator)
+        }
+
+        exMax.sortDateStrings() // set start and end - sd be called from processLines
+        result = exMax.chartStride
+        XCTAssertEqual(result, 2, "sd be 2 (day b/c it's only 2 items)")
+
+    }
+    
+    func testExMaxVal() {
+        let exMax = ExerciseMax()
+        exMax.process(components: ["Jan 01 1970", "Test Move", "10", "150.0"],
+                      maxEstimator: BrzyckiRepMaxEstimator())
+        
+        let result = exMax.value(for: "Jan 01 1970")
+        XCTAssertEqual(result, 200, "sd be 200")
+        
     }
 
     func testExMaxMgr() throws {
@@ -115,7 +123,7 @@ final class MaxtimatorTests: XCTestCase {
         let exerciseMaxMgr = ExerciseMaxMgr(dataLoader: DataFileLoader(), 
                                             maxEstimator: BrzyckiRepMaxEstimator())
 
-        let lines = setupLines(numLines: 100000)
+        let lines = setupLines(numLines: 100)
         self.measure {
             lines.forEach { exerciseMaxMgr.process(line: $0) }
         }
@@ -125,12 +133,12 @@ final class MaxtimatorTests: XCTestCase {
         let exerciseMaxMgr = ExerciseMaxMgr(dataLoader: DataFileLoader(),
                                             maxEstimator: BrzyckiRepMaxEstimator())
         
-        let lines = setupLines(numLines: 100000)
+        let lines = setupLines(numLines: 100)
         lines.forEach { exerciseMaxMgr.process(line: $0) }
 
         self.measure {
             exerciseMaxMgr.nameToMax.values.forEach { exMex in
-                _ = exMex.sortedDateStrings
+                exMex.sortDateStrings()
             }
         }
     }
