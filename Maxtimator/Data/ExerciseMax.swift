@@ -9,6 +9,8 @@ import Foundation
 import Charts
 
 let dayInMins = 24.0 * 60.0 * 60.0
+
+// This could be passed in - then the date format could vary.
 let DateFormat = "MMM dd yyyy"
 
 typealias OneSet = (reps:Int,weight:Double)
@@ -104,7 +106,6 @@ class ExerciseMax {
     
     init() {
         dateFmtr.dateFormat = DateFormat
-        dateFmtr.timeZone = TimeZone(identifier: "GMT")
     }
     
     /// Processes an array of Strings of a given line being processed.

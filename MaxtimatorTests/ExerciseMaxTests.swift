@@ -62,7 +62,8 @@ final class MaxtimatorTests: XCTestCase {
         XCTAssertNotNil(rDate, "sdn't be nil")
         XCTAssertLessThan(rDate, .now, "sd be before now")
         
-        let testDate = Date(timeIntervalSince1970: 0)
+        let timeInterval = rDate.timeIntervalSince1970
+        let testDate = Date(timeIntervalSince1970: timeInterval)
         XCTAssertEqual(rDate, testDate, "sd be equal to 1970")
     }
     
